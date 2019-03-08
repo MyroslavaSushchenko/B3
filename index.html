@@ -1,0 +1,25 @@
+<script>
+    var sum = 20000;
+    var term = 12;
+    var rate = 15;
+	
+    var month_rate = rate / 12 / 100;
+    var annuitet_sum = Math.round((sum * (month_rate * (Math.pow(1 + month_rate, term))) / ((Math.pow(1 + month_rate, term)) - 1)) * 100) / 100;
+	
+    var left_sum = sum;
+    for(var i = 0; i < term; i++) {
+        
+		var percent_part = Math.round(left_sum * month_rate * 100) / 100;
+		var body_sum = Math.round((annuitet_sum - percent_part) * 100) / 100;
+		var main_body = annuitet_sum - percent_part;
+        
+		left_sum -= main_body;
+		
+	console.log(`Month ${i+1}:     
+	Body sum: ${body_sum}
+	Percent sum: ${percent_part}
+	Each month payment (annuitet payment): ${annuitet_sum}
+	`);
+	}
+	
+</script>
